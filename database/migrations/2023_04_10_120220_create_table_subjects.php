@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('opis')->nullable();
+            $table->text('description')->nullable();
             $table->foreignId('professor_id')->constrained('professors');
             $table->timestamps();
         });
