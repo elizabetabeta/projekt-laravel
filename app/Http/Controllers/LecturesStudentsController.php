@@ -9,7 +9,8 @@ class LecturesStudentsController extends Controller
 {
     public function index()
     {
-        return LectureStudent::all();
+        #return LectureStudent::all();
+        return LectureStudent::with('student', 'lecture')->orderBy('created_at', 'DESC')->get();
     }
 
     public function store(Request $request)

@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Lecture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LecturesController extends Controller
 {
     public function index()
     {
-        return Lecture::all();
+        #return Lecture::all();
+        return Lecture::with('subject')->orderBy('date', 'DESC')->get();
+
     }
 
     public function store(Request $request)
@@ -18,6 +21,7 @@ class LecturesController extends Controller
         $lecture->time = $request->time;
         $lecture->date = $request->date;
         $lecture->classroom = $request->classroom;
+        $lecture->description = $request->description;
         $lecture->subject_id = $request->subject_id;
 
         $lecture->save();
@@ -30,6 +34,7 @@ class LecturesController extends Controller
         $lecture->time = $request->time;
         $lecture->date = $request->date;
         $lecture->classroom = $request->classroom;
+        $lecture->description = $request->description;
         $lecture->subject_id = $request->subject_id;
 
         $lecture->save();
@@ -38,6 +43,8 @@ class LecturesController extends Controller
     }
 
     public function destroy($id) {
+
+        DB::table('lectures_students')->where('lecture_id', $id)->delete();
         Lecture::find($id)->delete();
 
         return 'Lecture deleted!';

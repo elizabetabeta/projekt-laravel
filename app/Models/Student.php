@@ -13,4 +13,9 @@ class Student extends Model
     protected $fillable = [
         'name', 'student_number'
     ];
+
+    public function lecturestudent()
+    {
+        return $this->hasMany(LectureStudent::class, 'student_id');
+    }
 }

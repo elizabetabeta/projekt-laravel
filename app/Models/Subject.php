@@ -13,4 +13,16 @@ class Subject extends Model
     protected $fillable = [
         'name', 'description', 'professor_id',
     ];
+
+    public function professor()
+    {
+        return $this->belongsTo(Professor::class, 'professor_id');
+
+    }
+
+    public function lectures()
+    {
+        return $this->hasMany(Lecture::class, 'subject_id');
+    }
+
 }

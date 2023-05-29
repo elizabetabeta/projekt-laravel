@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->foreignId('professor_id')->constrained('professors');
+            $table->foreignId('professor_id')->nullable()->constrained('professors');
             $table->timestamps();
         });
     }

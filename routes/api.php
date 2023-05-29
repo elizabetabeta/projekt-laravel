@@ -7,6 +7,8 @@ use \App\Http\Controllers\ProfessorsController;
 use \App\Http\Controllers\LecturesController;
 use \App\Http\Controllers\SubjectsController;
 use \App\Http\Controllers\LecturesStudentsController;
+use \App\Http\Controllers\FileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Students
 Route::post('/students/add', [StudentsController::class, 'store']);
 Route::post('/students/edit/{id}', [StudentsController::class, 'edit']);
+Route::get('/students/edit/{id}', [StudentsController::class, 'edit1']);
 Route::get('/students/get', [StudentsController::class, 'index']);
 Route::get('/students/delete/{id}', [StudentsController::class, 'destroy']);
 
@@ -38,6 +41,7 @@ Route::get('/subjects/delete/{id}', [SubjectsController::class, 'destroy']);
 // Professors
 Route::post('/professors/add', [ProfessorsController::class, 'store']);
 Route::post('/professors/edit/{id}', [ProfessorsController::class, 'edit']);
+Route::get('/professors/edit/{id}', [ProfessorsController::class, 'edit1']);
 Route::get('/professors/get', [ProfessorsController::class, 'index']);
 Route::get('/professors/delete/{id}', [ProfessorsController::class, 'destroy']);
 

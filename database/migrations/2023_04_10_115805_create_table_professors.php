@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('professors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('username');
-            $table->string('password');
-            $table->enum('user_type', ['admin', 'prof']);
+            $table->string('surname');
+            $table->string('title');
+            $table->enum('gender', ['M', 'F']);
             $table->timestamps();
         });
     }

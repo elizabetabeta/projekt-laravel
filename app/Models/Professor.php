@@ -11,7 +11,13 @@ class Professor extends Model
 
     protected $table = 'professors';
     protected $fillable = [
-        'name', 'username', 'password',
-        'user_type'
+        'name', 'surname', 'title',
+        'gender'
     ];
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class, 'professor_id');
+    }
+
 }

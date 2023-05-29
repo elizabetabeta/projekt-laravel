@@ -13,4 +13,15 @@ class LectureStudent extends Model
     protected $fillable = [
         'student_id', 'lecture_id'
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
+    }
+
+    public function lecture()
+    {
+        return $this->belongsTo(Lecture::class, 'lecture_id');
+    }
+
 }

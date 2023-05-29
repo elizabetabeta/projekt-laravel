@@ -18,7 +18,8 @@ return new class extends Migration
             $table->time('time');
             $table->date('date');
             $table->string('classroom');
-            $table->foreignId('subject_id')->constrained('subjects');
+            $table->string('description');
+            $table->foreignId('subject_id')->nullable()->constrained('subjects');
             $table->timestamps();
         });
     }
